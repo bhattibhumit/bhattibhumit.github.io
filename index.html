@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<meta name="description" content="Data analytics portfolio">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Mobile top bar (shown under 880px) -->
+<div class="mobile-topbar">
+  <span class="brand-group">
+    <img class="mobile-avatar" src="assets/profile.jpg" alt="" data-avatar>
+    <span class="brand" data-name>Portfolio</span>
+  </span>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div>
+
+<div class="layout">
+
+  <!-- Sidebar (desktop) -->
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <img class="sidebar-avatar" src="assets/profile.jpg" alt="" data-avatar>
+      <div class="brand" data-name>Portfolio</div>
+      <div class="role" data-role>Role</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="sidebar-bottom">
+      <span data-location>Location</span>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main">
+
+    <section class="hero" id="hero">
+      <div class="hero-text">
+        <h1>Hi, I'm <span id="hero-name">—</span>.</h1>
+        <p class="intro" id="hero-intro"></p>
+
+        <div class="hero-stat">
+          <span class="value" id="stat-value"></span>
+          <span class="label" id="stat-label"></span>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">View projects</a>
+          <a class="btn" id="resume-btn" href="#" target="_blank" rel="noopener">Download Resume</a>
+          <a class="btn" id="email-btn" href="#">Get in touch</a>
+        </div>
+      </div>
+
+      <!-- <div class="hero-photo-wrap">
+        <div class="hero-photo-ring"></div>
+        <img class="hero-photo" src="assets/profile.jpg" alt="Portrait" data-avatar>
+      </div> -->
+    </section>
+
+    <section id="about" class="reveal">
+      <div class="section-header"><h2>About</h2></div>
+      <div class="about"><p id="about-text"></p></div>
+    </section>
+
+    <section id="skills" class="reveal">
+      <div class="section-header"><h2>Skills</h2></div>
+      <div id="skills-wrap"></div>
+    </section>
+
+    <section id="projects" class="reveal">
+      <div class="section-header">
+        <h2>Projects</h2>
+        <span class="count" id="projects-count"></span>
+      </div>
+      <div id="projects-wrap"></div>
+    </section>
+
+    <section id="certifications" class="reveal">
+      <div class="section-header"><h2>Certifications</h2></div>
+      <div id="certifications-wrap"></div>
+    </section>
+
+    <section id="education" class="reveal">
+      <div class="section-header"><h2>Education</h2></div>
+      <div id="education-wrap"></div>
+    </section>
+
+    <section id="contact" class="reveal">
+      <div class="section-header"><h2>Contact</h2></div>
+      <div class="contact-links" id="contact-links"></div>
+    </section>
+
+    <footer style="color: var(--ink-muted); font-size: 0.85rem; padding-top: 20px; border-top: 1px solid var(--line);">
+      <span id="footer-name"></span> · <span id="footer-year"></span>
+    </footer>
+
+  </main>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
