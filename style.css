@@ -436,6 +436,7 @@ section:last-of-type { margin-bottom: 40px; }
 
   .mobile-topbar {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 18px 24px;
@@ -454,42 +455,62 @@ section:last-of-type { margin-bottom: 40px; }
     object-fit: cover;
     border: 1px solid var(--line-strong);
   }
-  .mobile-topbar nav {
+
+  /* Hamburger button */
+  .menu-toggle {
     display: flex;
-    gap: 16px;
-    flex: 1 1 auto;
-    min-width: 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    margin-left: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    flex-shrink: 0;
   }
-  .mobile-topbar nav::-webkit-scrollbar { display: none; }
+  .menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+  }
+  .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle.open span:nth-child(2) { opacity: 0; }
+  .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Vertical dropdown nav */
+  .mobile-topbar nav {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.25s ease, margin-top 0.3s ease;
+  }
+  .mobile-topbar nav.open {
+    max-height: 400px;
+    opacity: 1;
+    margin-top: 16px;
+  }
   .mobile-topbar nav a {
     position: relative;
-    display: inline-block;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     text-decoration: none;
     color: var(--ink-muted);
-    white-space: nowrap;
-    padding-bottom: 4px;
-    transition: color 0.25s ease;
+    padding: 13px 4px;
+    border-bottom: 1px solid var(--line);
+    transition: color 0.2s ease, padding-left 0.2s ease;
   }
-  .mobile-topbar nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+  .mobile-topbar nav a:last-child { border-bottom: none; }
   .mobile-topbar nav a:hover,
-  .mobile-topbar nav a.active { color: var(--ink); }
-  .mobile-topbar nav a.active::after { transform: scaleX(1); }
+  .mobile-topbar nav a.active { color: var(--ink); padding-left: 8px; }
+  .mobile-topbar nav a.active { color: var(--accent); }
 
   .main { padding: 36px 22px 80px; }
   .hero { flex-direction: column-reverse; gap: 28px; text-align: left; }
