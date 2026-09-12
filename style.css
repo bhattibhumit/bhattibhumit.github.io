@@ -29,6 +29,7 @@ body {
   font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 a {
@@ -445,7 +446,7 @@ section:last-of-type { margin-bottom: 40px; }
     z-index: 10;
   }
   .mobile-topbar .brand { font-family: var(--font-display); font-weight: 600; }
-  .mobile-topbar .brand-group { display: flex; align-items: center; gap: 10px; }
+  .mobile-topbar .brand-group { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
   .mobile-avatar {
     width: 30px;
     height: 30px;
@@ -453,7 +454,17 @@ section:last-of-type { margin-bottom: 40px; }
     object-fit: cover;
     border: 1px solid var(--line-strong);
   }
-  .mobile-topbar nav { display: flex; gap: 16px; overflow-x: auto; }
+  .mobile-topbar nav {
+    display: flex;
+    gap: 16px;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-left: 20px;
+  }
+  .mobile-topbar nav::-webkit-scrollbar { display: none; }
   .mobile-topbar nav a {
     position: relative;
     display: inline-block;
