@@ -170,6 +170,21 @@ function initScrollReveal() {
   targets.forEach(t => observer.observe(t));
 }
 
+function initMobileNav() {
+  const toggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("mobile-nav");
+  if (!toggle || !nav) return;
+
+  const setOpen = (isOpen) => {
+    nav.classList.toggle("open", isOpen);
+    toggle.classList.toggle("open", isOpen);
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  };
+
+  toggle.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+  nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => setOpen(false)));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderIdentity(SITE_DATA);
   renderHero(SITE_DATA);
@@ -182,4 +197,5 @@ document.addEventListener("DOMContentLoaded", () => {
   renderFooter(SITE_DATA);
   highlightActiveNav();
   initScrollReveal();
+  initMobileNav();
 });
